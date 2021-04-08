@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-signin',
@@ -22,23 +20,22 @@ export class SigninComponent implements OnInit {
   ) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.email, Validators.required]],
-      passwoord: ['',
-        Validators.minLength(6),
-        Validators.maxLength(25)
+      password: ['',
+        [Validators.minLength(6),
+        Validators.maxLength(25)]
       ]
     })
   }
 
   ngOnInit(): void {
   }
-
   
-  public get email() {
+  public get email(): AbstractControl {
     return this.signInForm.get('email')
   }
 
   
-  public get password(){
+  public get password(): AbstractControl{
     return this.signInForm.get('password')
   }
 

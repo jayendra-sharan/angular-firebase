@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     AuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
