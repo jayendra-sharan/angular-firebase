@@ -7,8 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: 'signin', component: SigninComponent, data: { title: 'Sign In'}},
-  { path: 'signup', component: SigninComponent, data: { title: 'Sign Up'}},
-  { path: 'reset-password', component: SigninComponent, data: { title: 'Reset Password'}}
+  { path: 'signup', component: SignupComponent, data: { title: 'Sign Up'}},
+  { path: 'reset-password', component: ResetPasswordComponent, data: { title: 'Reset Password'}}
 ]
 
 
