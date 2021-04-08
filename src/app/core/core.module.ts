@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AuthModule } from '../auth/auth.module';
+import { AuthService } from './auth.service';
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule
+    BrowserAnimationsModule,
+    AuthModule
+  ],
+  declarations: [],
+  providers: [
+    AuthService
   ]
 })
 export class CoreModule { }
