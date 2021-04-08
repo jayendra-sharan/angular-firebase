@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
-import { AngularFireAuth } from "angularfire2/auth";
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from "angularfire2/firestore";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore } from "@angular/fire/firestore";
 
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
@@ -30,7 +27,7 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.id}`).valueChanges();
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -39,14 +36,14 @@ export class AuthService {
   }
 
   emailSignIn(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('You have successfully signed in.')
       }).catch (error => console.log(error.message));
   }
 
   signOut() {
-    return this.afAuth.auth.signOut()
+    return this.afAuth.signOut()
       .then(() => {
         this.router.navigate([])
       });
