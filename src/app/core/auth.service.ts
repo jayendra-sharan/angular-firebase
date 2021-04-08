@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/firestore";
-import * as firebase from "firebase/app";
+import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { Observable, of } from "rxjs";
@@ -63,6 +63,19 @@ export class AuthService {
       .then(() => console.log('Password reset link sent'))
       .catch(error => console.log(error.message))
 
+  }
+
+  googleLogin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.socialLogin(provider);
+  }
+
+  private socialLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+      .then((credential: any) => {
+        this.updateUserData(credential.user)
+      })
+      .catch(error => console.log(error.message))
   }
 
   private updateUserData({user}) {
