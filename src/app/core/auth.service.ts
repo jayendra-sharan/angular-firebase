@@ -20,6 +20,7 @@ interface User {
 })
 export class AuthService {
   user: Observable<User>;
+  authState: any = null;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -35,7 +36,19 @@ export class AuthService {
         }
       })
     )
+
+    this.afAuth.authState.subscribe(data => this.authState = data)
   }
+
+
+  public get authenticated() : boolean {
+    return this.authState !== null;
+  }
+
+  
+  public get currentUserId() : string {
+    return this.authenticated ? this.authState.uid : null;
+  }  
 
   emailSignIn(email: string, password: string) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
