@@ -23,7 +23,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'profile',
+    path: 'users/:id',
     component: UserDetailComponent,
     data: {
       title: 'Profile'
@@ -42,7 +42,9 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  exports: [],
+  exports: [
+    UserListItemComponent
+  ],
   providers: [
     UserService
   ]
