@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-user-list-item',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListItemComponent implements OnInit {
 
+  @Input() user: User
   constructor() { }
 
   ngOnInit(): void {
