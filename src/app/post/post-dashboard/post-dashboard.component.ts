@@ -45,9 +45,9 @@ export class PostDashboardComponent implements OnInit {
       title: this.postForm.get('title').value,
       image: this.imageURL || null,
       content: this.postForm.get('content').value,
-      draft: this.postForm.get('draft').value,
+      draft: this.postForm.get('draft').value || false,
       published: new Date(),
-      claps: 0
+      trending: 0
     }
 
     if (!this.postForm.untouched) {
