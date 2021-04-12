@@ -50,4 +50,9 @@ export class UserService {
       .then(() => console.log('Your email address has been updated', email))
       .catch((error: any) => console.log(error.message))
   }
+
+  updateUserData(data:any) {
+    const uid = this.auth.currentUserId;
+    return this.afs.doc(`/users/${uid}`).update(data);
+  }
 }

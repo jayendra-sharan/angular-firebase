@@ -10,3 +10,9 @@ mat-card-content, mat-card-actions {
 .user-title {
   margin: 1em;
 }
+
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
