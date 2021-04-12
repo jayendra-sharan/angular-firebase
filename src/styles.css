@@ -8,3 +8,17 @@
 .mat-icon {
   cursor: pointer;
 }
+
+:root {
+  --app-background-color: #443a3a;
+  --app-primary-color: #E34234;
+}
+
+body {
+  margin: 0;
+  /* background-color: var(--app-background-color); */
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
