@@ -1,1 +1,16 @@
-<p>post-dashboard works!</p>
+<mat-card>
+  <section></section>
+  <section>
+    <form [formGroup]="postForm" (ngSubmit)="savePost()">
+      <mat-form-field>
+        <input matInput placeholder="Post Title" formControlName="title">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Post Description" formControlName="content"></textarea>
+      </mat-form-field>
+      <mat-slide-toggle formControlName="draft">Publish?</mat-slide-toggle>
+
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </form>
+  </section>
+</mat-card>
