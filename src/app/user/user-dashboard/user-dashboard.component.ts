@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
@@ -18,7 +19,8 @@ export class UserDashboardComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private userService: UserService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +61,19 @@ export class UserDashboardComponent implements OnInit {
           })
         })
       ).subscribe();
-      
     }
+  }
+
+  updateUser() {
+    const data = {
+      website: this.user.website || null,
+      location: this.user.location || null,
+      bio: this.user.bio || null
+    }
+    return this.userService.updateUserData(data);
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
