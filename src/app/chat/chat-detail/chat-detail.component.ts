@@ -5,6 +5,10 @@ import {
   ElementRef,
   AfterViewChecked
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Thread } from '../thread.model';
+import { ThreadService } from '../thread.service';
 
 @Component({
   selector: 'app-chat-detail',
@@ -14,10 +18,26 @@ import {
 export class ChatDetailComponent implements OnInit {
   
   @ViewChild('scroller') private feed: ElementRef;
+
+  threads: Observable<Thread[]>
+  threadId: string
   
-  constructor(public el: ElementRef) { }
+  constructor(
+    public el: ElementRef,
+    private threadService: ThreadService,
+    private router: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.getThreadId();
+  }
+
+  getThreadId() {
+    this.threadId = this.router.snapshot.paramMap.get('id');
+  }
+
+  delete() {
+    this.threadService.deleteThread(this.threadId)
   }
 
   ngAfterViewChecked() {
@@ -28,4 +48,5 @@ export class ChatDetailComponent implements OnInit {
     const scrollPane: any = this.el.nativeElement.querySelector('.chat-feed');
     scrollPane.scrollTop = scrollPane.scrollHeight;
   }
+
 }

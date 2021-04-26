@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { Thread } from '../thread.model';
 @Component({
   selector: 'app-chat-thread',
   templateUrl: './chat-thread.component.html',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatThreadComponent implements OnInit {
 
-  constructor() { }
+  @Input() thread: Thread
+
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

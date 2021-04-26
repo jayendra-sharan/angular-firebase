@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Thread } from '../thread.model';
+import { ThreadService } from '../thread.service';
 
 @Component({
   selector: 'app-chat-threads',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatThreadsComponent implements OnInit {
 
-  constructor() { }
+  threads: Observable<Thread[]>
+
+  constructor(
+    private threadService: ThreadService
+  ) { }
 
   ngOnInit(): void {
+    this.getThreads();
+  }
+
+  getThreads() {
+    this.threads = this.threadService.getThreads();
   }
 
 }

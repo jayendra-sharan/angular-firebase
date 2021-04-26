@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { MessageService } from '../message.service';
+import { ThreadService } from '../thread.service';
 
 @Component({
   selector: 'app-chat-input',
@@ -15,7 +16,8 @@ export class ChatInputComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private messageService: MessageService,
-    private auth: AuthService
+    private auth: AuthService,
+    private threadService: ThreadService
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +36,12 @@ export class ChatInputComponent implements OnInit {
       senderId,
       message,
     );
+    this.saveLast(channelId, message);
     this.message = '';
+  }
+
+  saveLast(channelId, message) {
+    this.threadService.saveLastMessage(channelId, message);
   }
 
   handleSubmit(event) {

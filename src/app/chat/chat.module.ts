@@ -14,7 +14,7 @@ import { ThreadService } from './thread.service';
 
 const routes = [
   {
-    path: 'chat/detail', component: ChatDetailComponent,
+    path: 'chat/:id', component: ChatDetailComponent,
   },
   {
     path: 'chat', component: ChatListComponent
