@@ -10,6 +10,7 @@ import { RoutingModule } from './routing.module';
 import { AngularFireModule } from "@angular/fire"
 import { environment } from 'src/environments/environment';
 import { PostModule } from './post/post.module';
+import { GalleryModule } from './gallery/gallery.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +23,8 @@ import { PostModule } from './post/post.module';
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
     RoutingModule,
-    PostModule
+    PostModule,
+    GalleryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
