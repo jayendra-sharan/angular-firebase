@@ -1,0 +1,7 @@
+.appTitle {
+  cursor: pointer;
+}
+span:focus {
+  outline: 0;
+  border: 0;
+}

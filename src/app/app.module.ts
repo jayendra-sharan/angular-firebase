@@ -10,8 +10,10 @@ import { RoutingModule } from './routing.module';
 import { AngularFireModule } from "@angular/fire"
 import { environment } from 'src/environments/environment';
 import { PostModule } from './post/post.module';
-import { GalleryModule } from './gallery/gallery.module';
 import { ChatModule } from './chat/chat.module';
+import { SharedModule } from './shared/shared.module';
+import { GalleryModule } from './gallery/gallery.module';
+import { RoutingGuard } from './routing.guard';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,13 +24,14 @@ import { ChatModule } from './chat/chat.module';
     AppRoutingModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
+    SharedModule,
     CoreModule,
     RoutingModule,
     PostModule,
     GalleryModule,
     ChatModule
   ],
-  providers: [],
+  providers: [RoutingGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

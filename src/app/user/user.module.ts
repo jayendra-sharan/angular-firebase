@@ -7,6 +7,7 @@ import { UserListItemComponent } from './user-list-item/user-list-item.component
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { PostModule } from '../post/post.module';
+import { RoutingGuard } from '../routing.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     component: UserDashboardComponent,
     data: {
       title: 'My Profile'
-    }
+    },
+    canActivate: [RoutingGuard]
   },
   {
     path: 'users',

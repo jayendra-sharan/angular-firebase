@@ -36,10 +36,6 @@ export class ChatDetailComponent implements OnInit {
     this.threadId = this.router.snapshot.paramMap.get('id');
   }
 
-  delete() {
-    this.threadService.deleteThread(this.threadId)
-  }
-
   ngAfterViewChecked() {
     this.scrollToBottom();
   }

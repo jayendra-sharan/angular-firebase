@@ -1,12 +1,3 @@
-<mat-toolbar>
-  <button (clic)="goBack()">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <span class="spacer"></span>
-  <button mat-button (click)="editing=false" *ngIf="editing">Done</button>
-  <button mat-button (click)="editing=true" *ngIf="!editing">Edit Profile</button>
-</mat-toolbar>
-
 <ng-container *ngIf="user">
   <div [hidden]="editing">
     <div class="hero">
@@ -17,12 +8,15 @@
       <div class="hero-text">
         <h1>{{user.displayName}}</h1>
         <p>{{user.email}}</p>
+        <br><br>
+        <button mat-button (click)="editing=true" *ngIf="!editing">Edit Profile</button>
       </div>
     </div>
-    <!-- <app-post-dashboard></app-post-dashboard> -->
     <mat-card>
+      <h1>Add Photo</h1>
       <app-upload [path]="path" [meta]="meta" [uploadType]="uploadType"></app-upload>
     </mat-card>
+    <app-post-dashboard></app-post-dashboard>
   </div>
 
   <div [hidden]="!editing">
@@ -53,6 +47,7 @@
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit" (click)="updateUser()">Save</button>
+        <button mat-button (click)="editing=false" *ngIf="editing">Cancel</button>
       </form>
     </mat-card>
 

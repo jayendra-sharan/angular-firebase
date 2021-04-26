@@ -5,19 +5,21 @@ import { MaterialModule } from '../material.module';
 import { FromNowPipe } from './from-now.pipe';
 import { UploadComponent } from './upload/upload.component';
 import { UploadService } from './upload/upload.service';
-
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     FromNowPipe,
-    UploadComponent
+    UploadComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { UploadService } from './upload/upload.service';
     ReactiveFormsModule,
     MaterialModule,
     FromNowPipe,
-    UploadComponent
+    UploadComponent,
+    NavbarComponent
   ],
   providers: [
     UploadService
