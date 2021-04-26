@@ -2,6 +2,10 @@ mat-toolbar {
   background-color: var(--app-background-color);
   color: #ffffff;
 }
+mat-card {
+  max-width: 600px;
+  margin: 16px auto;
+}
 
 mat-form-field {
   width: 100%;
@@ -45,11 +49,10 @@ mat-form-field {
 }
 
 .hero {
-  background-color: var(--app-background-color);
   min-height: 200px;
   padding-top: 150px;
-  color: #ffffff;
 }
+
 .hero-text {
   margin-left: 15px;
 }

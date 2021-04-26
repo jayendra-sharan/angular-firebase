@@ -33,10 +33,11 @@ export class UserDashboardComponent implements OnInit {
   }
 
   setUploadData() {
+    const userId = this.auth.currentUserId;
     return this.auth.user.subscribe(user => {
-      this.path = `users/${user.uid}/gallery`;
+      this.path = `users/${userId}/gallery`;
       this.meta = {
-        uploader: user.uid,
+        uploader: userId,
         website: "www.jayendra.co.in",        
       }
       this.uploadType = true

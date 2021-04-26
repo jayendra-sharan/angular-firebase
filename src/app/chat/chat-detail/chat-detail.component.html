@@ -1,19 +1,4 @@
 <main>
-  <mat-toolbar>
-    <button mat-icon-button>
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <span class="spacer"></span>
-    <button mat-icon-button>
-      <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
-    </button>
-
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="delete()">
-        Delete <mat-icon>delete</mat-icon>
-      </button>
-    </mat-menu>
-  </mat-toolbar>
   <div class="chat-feed" #scroller>
     <app-chat-messages></app-chat-messages>
   </div>
