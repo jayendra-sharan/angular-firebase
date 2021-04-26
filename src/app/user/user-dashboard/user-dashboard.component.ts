@@ -16,6 +16,10 @@ export class UserDashboardComponent implements OnInit {
   user: User;
   task: AngularFireUploadTask;
 
+  path: string
+  meta: object
+  uploadType: boolean
+
   constructor(
     private auth: AuthService,
     private userService: UserService,
@@ -24,7 +28,19 @@ export class UserDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
+    this.setUploadData();
+  }
+
+  setUploadData() {
+    return this.auth.user.subscribe(user => {
+      this.path = `users/${user.uid}/gallery`;
+      this.meta = {
+        uploader: user.uid,
+        website: "www.jayendra.co.in",        
+      }
+      this.uploadType = true
+    });
   }
 
   getUser() {
